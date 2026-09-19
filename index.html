@@ -43,7 +43,6 @@
 <div class="app">
   <h1>📝 おうち Spelling Bee</h1>
   <div class="sub">英単語を聞いて、日本語ヒントを手がかりにスペルを答えよう。</div>
-
   <div class="card">
     <div class="small">Question</div>
     <div id="word" class="word">---</div>
@@ -55,7 +54,6 @@
     <div id="jpHint" class="hint hidden"></div>
     <div id="defHint" class="hint hidden"></div>
   </div>
-
   <div class="card">
     <input id="answer" type="text" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="スペルを入力">
     <div class="row" style="margin-top:12px;">
@@ -64,7 +62,6 @@
     </div>
     <div id="result" class="result"></div>
   </div>
-
   <div class="card">
     <div class="stats">
       <div class="stat"><div class="small">正解</div><div id="correct" class="num">0</div></div>
@@ -72,137 +69,27 @@
       <div class="stat"><div class="small">正解率</div><div id="rate" class="num">0%</div></div>
     </div>
   </div>
-
   <div class="card">
     <strong>間違えた単語</strong>
     <ul id="mistakes" class="mistakes"><li>まだありません</li></ul>
   </div>
 </div>
-
 <script>
 const words = [
-  {w:"apple", jp:"りんご", def:"a round fruit that is often red, green, or yellow"},
-  {w:"animal", jp:"動物", def:"a living thing such as a dog, cat, or bird"},
-  {w:"answer", jp:"答え", def:"something you say or write in reply to a question"},
-  {w:"beautiful", jp:"美しい", def:"very nice to look at"},
-  {w:"because", jp:"なぜなら", def:"for the reason that"},
-  {w:"birthday", jp:"誕生日", def:"the day each year when a person was born"},
-  {w:"brother", jp:"兄、弟", def:"a boy or man who has the same parents as you"},
-  {w:"building", jp:"建物", def:"a structure such as a house, school, or office"},
-  {w:"butterfly", jp:"チョウ", def:"an insect with four colorful wings"},
-  {w:"calendar", jp:"カレンダー", def:"a chart that shows the days, weeks, and months of a year"},
-  {w:"careful", jp:"注意深い", def:"thinking about what you are doing so you do not make mistakes"},
-  {w:"children", jp:"子どもたち", def:"young people; more than one child"},
-  {w:"climbing", jp:"登ること", def:"going up something such as a mountain or tree"},
-  {w:"country", jp:"国", def:"a nation with its own government and borders"},
-  {w:"different", jp:"違った", def:"not the same"},
-  {w:"difficult", jp:"難しい", def:"not easy"},
-  {w:"elephant", jp:"ゾウ", def:"a very large animal with a trunk"},
-  {w:"favorite", jp:"お気に入りの", def:"liked more than all the others"},
-  {w:"football", jp:"サッカー", def:"a sport played by two teams that try to kick a ball into a goal"},
-  {w:"friend", jp:"友達", def:"a person you like and trust"},
-  {w:"garden", jp:"庭", def:"a place where flowers, vegetables, or trees are grown"},
-  {w:"girl", jp:"女の子", def:"a female child"},
-  {w:"happiness", jp:"幸福、幸せ", def:"the feeling of being happy"},
-  {w:"hospital", jp:"病院", def:"a place where sick or injured people receive medical care"},
-  {w:"important", jp:"重要な", def:"having great value or importance"},
-  {w:"interesting", jp:"興味深い、おもしろい", def:"something that keeps your attention because it is enjoyable or unusual"},
-  {w:"jungle", jp:"ジャングル", def:"a thick tropical forest"},
-  {w:"kitchen", jp:"台所", def:"a room where food is prepared and cooked"},
-  {w:"language", jp:"言語", def:"a system of words used by people to communicate"},
-  {w:"library", jp:"図書館", def:"a place where books and other materials can be borrowed or read"},
-  {w:"mountain", jp:"山", def:"a very high natural landform"},
-  {w:"morning", jp:"朝", def:"the early part of the day"},
-  {w:"picture", jp:"絵、写真", def:"an image of something, made or photographed"},
-  {w:"question", jp:"質問", def:"a sentence used to ask for information"},
-  {w:"remember", jp:"覚えている", def:"to keep something in your mind or bring it back to mind"},
-  {w:"school", jp:"学校", def:"a place where children learn"},
-  {w:"shoulder", jp:"肩", def:"the part of the body between the neck and arm"},
-  {w:"special", jp:"特別な", def:"different from or more important than usual"},
-  {w:"summer", jp:"夏", def:"the warmest season of the year"},
-  {w:"teacher", jp:"先生", def:"a person who helps students learn"},
-  {w:"together", jp:"一緒に", def:"with each other"},
-  {w:"umbrella", jp:"傘", def:"a thing used to protect you from rain"},
-  {w:"vegetable", jp:"野菜", def:"a plant or part of a plant used as food"},
-  {w:"weather", jp:"天気", def:"the condition of the air outside, such as sunny or rainy"},
-  {w:"winter", jp:"冬", def:"the coldest season of the year"}
-];
+  ["apple","りんご","a round fruit that is often red, green, or yellow"],["animal","動物","a living thing such as a dog, cat, or bird"],["answer","答え","something you say or write in reply to a question"],["beautiful","美しい","very nice to look at"],["because","なぜなら","for the reason that"],["birthday","誕生日","the day each year when a person was born"],["brother","兄、弟","a boy or man who has the same parents as you"],["building","建物","a structure such as a house, school, or office"],["butterfly","チョウ","an insect with four colorful wings"],["calendar","カレンダー","a chart that shows the days, weeks, and months of a year"],["careful","注意深い","thinking about what you are doing so you do not make mistakes"],["children","子どもたち","young people; more than one child"],["climbing","登ること","going up something such as a mountain or tree"],["country","国","a nation with its own government and borders"],["different","違った","not the same"],["difficult","難しい","not easy"],["elephant","ゾウ","a very large animal with a trunk"],["favorite","お気に入りの","liked more than all the others"],["football","サッカー","a sport played by two teams that try to kick a ball into a goal"],["friend","友達","a person you like and trust"],["garden","庭","a place where flowers, vegetables, or trees are grown"],["girl","女の子","a female child"],["happiness","幸福、幸せ","the feeling of being happy"],["hospital","病院","a place where sick or injured people receive medical care"],["important","重要な","having great value or importance"],["interesting","興味深い、おもしろい","something that keeps your attention because it is enjoyable or unusual"],["jungle","ジャングル","a thick tropical forest"],["kitchen","台所","a room where food is prepared and cooked"],["language","言語","a system of words used by people to communicate"],["library","図書館","a place where books and other materials can be borrowed or read"],["mountain","山","a very high natural landform"],["morning","朝","the early part of the day"],["picture","絵、写真","an image of something, made or photographed"],["question","質問","a sentence used to ask for information"],["remember","覚えている","to keep something in your mind or bring it back to mind"],["school","学校","a place where children learn"],["shoulder","肩","the part of the body between the neck and arm"],["special","特別な","different from or more important than usual"],["summer","夏","the warmest season of the year"],["teacher","先生","a person who helps students learn"],["together","一緒に","with each other"],["umbrella","傘","a thing used to protect you from rain"],["vegetable","野菜","a plant or part of a plant used as food"],["weather","天気","the condition of the air outside, such as sunny or rainy"],["winter","冬","the coldest season of the year"]
+].map(([w,jp,def])=>({w,jp,def}));
 
-let current = null;
-let correct = 0, total = 0;
-const mistakes = new Map();
-
-function pickQuestion() {
-  current = words[Math.floor(Math.random() * words.length)];
-  document.getElementById("word").textContent = current.w;
-  document.getElementById("answer").value = "";
-  document.getElementById("result").textContent = "";
-  document.getElementById("jpHint").classList.add("hidden");
-  document.getElementById("defHint").classList.add("hidden");
-  document.getElementById("answer").focus();
-}
-function speak(text) {
-  if (!("speechSynthesis" in window)) {
-    alert("このブラウザでは音声機能を利用できません。");
-    return;
-  }
-  speechSynthesis.cancel();
-  const u = new SpeechSynthesisUtterance(text);
-  u.lang = "en-US";
-  u.rate = 0.78;
-  speechSynthesis.speak(u);
-}
-function check() {
-  if (!current) return;
-  const val = document.getElementById("answer").value.trim().toLowerCase();
-  if (!val) return;
-  total++;
-  if (val === current.w) {
-    correct++;
-    document.getElementById("result").textContent = "✅ Correct!";
-    speak(current.w);
-  } else {
-    mistakes.set(current.w, (mistakes.get(current.w) || 0) + 1);
-    document.getElementById("result").textContent = "❌ 正解は " + current.w;
-    speak(current.w);
-  }
-  updateStats();
-  renderMistakes();
-}
-function updateStats() {
-  document.getElementById("correct").textContent = correct;
-  document.getElementById("total").textContent = total;
-  document.getElementById("rate").textContent = total ? Math.round(correct / total * 100) + "%" : "0%";
-}
-function renderMistakes() {
-  const el = document.getElementById("mistakes");
-  const arr = [...mistakes.entries()].sort((a,b)=>b[1]-a[1]);
-  if (!arr.length) {
-    el.innerHTML = "<li>まだありません</li>";
-    return;
-  }
-  el.innerHTML = arr.map(([w,n]) => "<li><strong>" + w + "</strong> × " + n + "</li>").join("");
-}
-document.getElementById("speakBtn").addEventListener("click", () => current && speak(current.w));
-document.getElementById("jpBtn").addEventListener("click", () => {
-  if (current) {
-    const el = document.getElementById("jpHint");
-    el.textContent = "ヒント： " + current.jp;
-    el.classList.toggle("hidden");
-  }
-});
-document.getElementById("defBtn").addEventListener("click", () => {
-  if (current) {
-    const el = document.getElementById("defHint");
-    el.textContent = "Definition: " + current.def;
-    el.classList.toggle("hidden");
-  }
-});
-document.getElementById("checkBtn").addEventListener("click", check);
-document.getElementById("nextBtn").addEventListener("click", pickQuestion);
-document.getElementById("answer").addEventListener("keydown", e => {
-  if (e.key === "Enter") check();
-});
+let current=null, correct=0, total=0; const mistakes=new Map();
+function pickQuestion(){current=words[Math.floor(Math.random()*words.length)];word.textContent=current.w;answer.value="";result.textContent="";jpHint.classList.add("hidden");defHint.classList.add("hidden");}
+function speak(t){if(!("speechSynthesis"in window)){alert("このブラウザでは音声機能を利用できません。");return;}speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang="en-US";u.rate=.78;speechSynthesis.speak(u);}
+function check(){if(!current)return;const v=answer.value.trim().toLowerCase();if(!v)return;total++;if(v===current.w){correct++;result.textContent="✅ Correct!";speak(current.w);}else{mistakes.set(current.w,(mistakes.get(current.w)||0)+1);result.textContent="❌ 正解は "+current.w;speak(current.w);}updateStats();renderMistakes();}
+function updateStats(){document.getElementById("correct").textContent=correct;document.getElementById("total").textContent=total;document.getElementById("rate").textContent=total?Math.round(correct/total*100)+"%":"0%";}
+function renderMistakes(){const el=document.getElementById("mistakes"),arr=[...mistakes.entries()].sort((a,b)=>b[1]-a[1]);el.innerHTML=arr.length?arr.map(([w,n])=>"<li><strong>"+w+"</strong> × "+n+"</li>").join(""):"<li>まだありません</li>";}
+speakBtn.onclick=()=>current&&speak(current.w);
+jpBtn.onclick=()=>{if(current){jpHint.textContent="ヒント： "+current.jp;jpHint.classList.toggle("hidden");}};
+defBtn.onclick=()=>{if(current){defHint.textContent="Definition: "+current.def;defHint.classList.toggle("hidden");}};
+checkBtn.onclick=check;nextBtn.onclick=pickQuestion;answer.onkeydown=e=>{if(e.key==="Enter")check();};
+if("serviceWorker" in navigator) navigator.serviceWorker.register("./service-worker.js").catch(()=>{});
 pickQuestion();
 </script>
 </body>
