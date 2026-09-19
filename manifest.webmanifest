@@ -1,0 +1,9 @@
+{
+  "name": "おうち Spelling Bee",
+  "short_name": "Spelling Bee",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f4f6f8",
+  "theme_color": "#f7f7f7",
+  "lang": "ja"
+}
